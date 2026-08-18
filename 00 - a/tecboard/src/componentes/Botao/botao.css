@@ -1,0 +1,17 @@
+.button-form {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 0 auto;
+    padding: 15px 70px;
+    font-size: 18px;
+    background-color: rgb(93, 182, 182);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-form:hover {
+    background-color: rgb(82, 156, 156);
+}

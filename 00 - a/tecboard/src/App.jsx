@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 import { Banner } from './componentes/Banner'
 import { CardEvento } from './componentes/CardEvento'
@@ -36,14 +37,20 @@ function App() {
       nome: 'cloud'
     },
   ]
-  const eventos = [
+// Use state sera uma lista -> lista[0] seria a lista com os dicionarios de eventos, lista[1] a função que ATUALIZA a lista[0]
+const [eventos, setEventos] = useState([
     {
-      capa: 'http://...',
+      capa: 'https://raw.githubusercontent.com/viniciosneves/tecboard-assets/refs/heads/main/imagem_1.png',
       tema: temas[0],
       data: new Date(),
       titulo: 'Mulheres no Front'
     }
-  ]
+  ])
+
+  function adicionarEvento(evento) {
+    // setEventos requer uma lista nova, portando aqui enviamos uma lista nova do zero com tudo que tinha antes em eventos + o novo evento
+    setEventos([...eventos, evento])
+  }
 
 
   return (
@@ -53,16 +60,24 @@ function App() {
       </header>
       <Banner />
 
-      <FormularioDeEvento />
+      <FormularioDeEvento aoSubmeter={adicionarEvento} />
 
-      {temas.map(function (item) {
-        return (
-          <section key={item.id}>
-            <Tema tema={item} />
-            < CardEvento evento={eventos[0]} />
-          </section>
-        )
-      })}
+      <section className='section-card'>
+        {temas.map(function (item) {
+          return (
+            <div key={item.id}>
+              <Tema tema={item} />
+              <div className='cards-tema'>
+              {eventos.map((evento, index) => {
+                return (
+                  < CardEvento key={index} evento={evento} />
+                )
+              })}
+              </div>
+            </div>
+          )
+        })}
+      </section>
     </main>
   )
 }

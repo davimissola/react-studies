@@ -41,7 +41,7 @@ function App() {
 const [eventos, setEventos] = useState([
     {
       capa: 'https://raw.githubusercontent.com/viniciosneves/tecboard-assets/refs/heads/main/imagem_1.png',
-      tema: temas[0],
+      tema: 'front-end',
       data: new Date(),
       titulo: 'Mulheres no Front'
     }
@@ -63,16 +63,26 @@ const [eventos, setEventos] = useState([
       <FormularioDeEvento aoSubmeter={adicionarEvento} />
 
       <section className='section-card'>
+        {/* RENDERIZA OS TEMAS */}
         {temas.map(function (item) {
+          if (eventos.some((evento) => {
+            return evento.tema == item.nome
+          }))
           return (
             <div key={item.id}>
               <Tema tema={item} />
+
+              {/* RENDERIZAR CARD POR SECTION */}
               <div className='cards-tema'>
-              {eventos.map((evento, index) => {
-                return (
-                  < CardEvento key={index} evento={evento} />
-                )
-              })}
+                {eventos
+                .filter((evento) => {
+                  return evento.tema == item.nome
+                })
+                .map((evento, index) => {
+                  return (
+                    < CardEvento key={index} evento={evento} />
+                  )
+                })}
               </div>
             </div>
           )

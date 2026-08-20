@@ -8,6 +8,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 70px;
+  width: 1000px;
   max-width: 90%;
   margin: 0 auto;
 }
@@ -16,4 +17,5 @@ header {
   display: flex;
   padding-top: 20px;
   gap: 70px;
+  flex-wrap: wrap;
 }

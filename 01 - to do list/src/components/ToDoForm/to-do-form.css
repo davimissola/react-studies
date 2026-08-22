@@ -1,0 +1,22 @@
+.form-add {
+    text-align: center;
+}
+
+.input-add {
+    border-radius: 24px;
+    background-color: transparent;
+    border: 1px solid #EAEAEA;
+    width: 80%;
+    margin-top: 10px;
+    padding: 13px;
+    color: white;
+}
+
+.btn-form-add {
+    background-color: #877EED;
+    border: none;
+    padding: 13px 17px;
+    border-radius: 20px;
+    color: white;
+    margin-top: 10px;
+}

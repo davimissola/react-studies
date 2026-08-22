@@ -11,7 +11,7 @@ export function ToDoItem ({ item }) {
     return (
         <li className={styles.join(' ')}>
             <p className="date">
-                {new Date(item.createdAt).toLocaleDateString('pt-BR')}
+                {item.createdAt}
             </p>
             <div className="details">
                 <input type="checkbox" className="checkbox" defaultChecked={item.completed} />

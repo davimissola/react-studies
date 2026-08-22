@@ -55,9 +55,14 @@ const completed = [
 function App() {
 
   const [showDialog, setShowDialog] = useState(false)
-
   const toggleDialog = () => {
     setShowDialog(!showDialog)
+  }
+
+  const [todosDo, setTodosDo] = useState(todos)
+  const addToDo = (new_item) => {
+    setTodosDo(todosDo.concat(new_item))
+    toggleDialog()
   }
 
   return (
@@ -72,7 +77,7 @@ function App() {
         <ChecklistsWrapper>
           <SubHeading>Para estudar</SubHeading>
           <ToDoList>
-            {todos.map(function (t) {
+            {todosDo.map(function (t) {
               return <ToDoItem key={t.id} item={t} />
             })}
           </ToDoList>
@@ -84,7 +89,7 @@ function App() {
           </ToDoList>
 
           <Footer>
-            <Dialog isOpen={showDialog} onClose={toggleDialog} />
+            <Dialog isOpen={showDialog} onClose={toggleDialog} addToDo={addToDo} />
             <FabButton onClick={toggleDialog}>
               <IconPlus />
             </FabButton>
